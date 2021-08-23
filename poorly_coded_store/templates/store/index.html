@@ -7,15 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <title>Amadon</title>
 </head>
-<body>
-    <h1>Amadon Store!</h1>
-    <table>
+<body class="bg-secondary">
+    <h1 class="bg-secondary text-light">Amadon Store!</h1>
+    <table class="table table-hover bg-light">
         <thead>
             <tr>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Actions</th>
+                <th scope="col">#</th>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +24,9 @@
             <tr>
                 <form action="/checkout" method="post">
                     {% csrf_token %}
+                    <th scope='row'>{{product.id}}</th>
                     <td>{{product.description}}</td>
-                    <td><input type="hidden" name="price" value="{{product.price}}">{{product.price}}</td>
+                    <td><input type="hidden" name="productid" value="{{product.id}}">{{product.price}}</td>
                     <td><select name="quantity">
                         <option value="1">1</option>              
                         <option value="2">2</option>              
